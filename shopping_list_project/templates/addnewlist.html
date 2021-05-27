@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center h-100">
+    <div class="user-list col-md-7 text-center pt-4">
+        <h1 class="px-1 mb-4">Add new list here:</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <div class="listLabels text-right">
+                    <label class="formLabel" for="listname">List name:</label>
+                </div>
+                <div class="listFields text-left">
+                    <input type="text" name="listname" id="listname">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="listLabels text-right">
+                    <label class="formLabel" for="newItem">New item</label>
+                </div>
+                <div class="listFields text-left">
+                    <input type="text" name="newItem" id="newItem">
+                </div>
+            </div>
+            <div class="form-group">
+                <div id="addNewListItem" class="addBtn btn btn-outline-warning">Add</div>
+            </div>
+            <div class="form-group">
+                <ul id="list">
+				</ul>
+            </div>
+            <input id="saveThisItems" name="saveThisListToBackend" type="text" hidden value="">
+            <div class="form-group">
+                <button id="saveNewList" class="saveBtn btn btn-outline-warning mr-3">Save</button>
+                <button type="submit" id="saveNewListSubmitBtn" hidden></button>
+                <a href="{% url 'shoppinglist' %}" class="backBtn btn btn-outline-warning">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

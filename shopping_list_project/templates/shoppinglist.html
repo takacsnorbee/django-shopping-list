@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center h-100">
+    <div class="user-list col-md-7 text-center pt-4">
+        <h1 class="px-1 mb-4">{{ user.username }}'s lists:</h1>
+            <ul>
+                {% for element in lists %}
+                    <li class="userslistelement">
+                        <a href="{% url 'shoppinglistitems' element.id %}">{{element.list_name}}</a>
+                            <button class="deleteListBtn btn btn-danger btn-sm ml-2" list-id-attr="{{element.id}}">X</button>
+                    </li>
+                {% endfor %}
+            </ul>
+            <form method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="deleteThisList" id="delByThisId" value="">
+                <button type="submit" id="delThisListBtn" hidden></button>
+            </form>
+        <a href="{% url 'add_list' %}" class="backBtn btn btn-outline-warning">Add new list</a>
+    </div>
+</div>
+
+{% endblock %}

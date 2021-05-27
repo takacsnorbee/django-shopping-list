@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="row justify-content-center h-100">
+        <div class="signup col-md-7 align-self-center text-center">
+            <h1 class="px-1 mb-4">Sign Up to Shopping List App!</h1>
+            {% if error %}
+                <h2 id="signup-error" class="px-1">{{ error }}</h2>
+            {% endif %}
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <div class="sLabels text-right">
+                        <label class="formLabel" for="username">Username:</label>
+                    </div>
+                    <div class="sFields text-left">
+                        <input type="text" name="username" id="username" aria-describedby="usernameHelp">
+                    </div>
+                    <div class="sLabels text-right"></div>
+                    <div class="sFields text-left">
+                        <small id="usernameHelp" class="form-text">Your username must be unique</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="sLabels text-right">
+                        <label class="formLabel" for="password1">Password:</label>
+                    </div>
+                    <div class="sFields text-left">
+                        <input type="password" name="password1" id="password1">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="sLabels text-right">
+                        <label class="formLabel" for="password2">Confirm your password</label>
+                    </div>
+                    <div class="sFields text-left">
+                        <input type="password" name="password2" id="password2">
+                    </div>
+                </div>
+                <div class="sLabels text-right">
+                    <button type="submit" class="signupBtn btn btn-outline-warning mr-3">Sign up</button>
+                </div>
+                <div class="sFields text-left">
+                    <a href="{% url 'home' %}" class="backBtn btn btn-outline-warning">Back to Home</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
